@@ -537,10 +537,8 @@ class CalendarPage extends Component {
                     value30={this.state.day30}
                     value31={this.state.day31}
                 />
-                <button onClick={this.testUpdateChildSchema} >childSchema</button>
-                <button onClick={this.updateCalendar} >Save This Month</button>
                 <br></br>
-                <button onClick={this.calendarSave} >calendar update</button>
+                <button onClick={this.calendarSave} >Calendar Save</button>
 
 
 
