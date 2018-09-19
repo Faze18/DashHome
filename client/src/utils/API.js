@@ -2,6 +2,15 @@ import axios from "axios";
 
 export default {
   // Gets articles from the NYT API
+  findTopic: function(params) {
+    return axios.get("/users/topic/find/"+ params);
+  },
+  allTopics: function(params) {
+    return axios.get("/users/topic/",params);
+  },
+  postTopic: function(params) {
+    return axios.patch("/users/post/", params);
+  },
   getUsers: function(params) {
     return axios.get("/users/users");
   },

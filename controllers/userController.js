@@ -27,10 +27,10 @@ module.exports = {
   findByTopic:function(req,res){
     console.log( "looking for topioc" )
     // console.log(req)
-    console.log( req.params.id )
+    console.log( req.params.topic )
 
     db.Posts
-      .findOne( { topic: req.params.id } )
+      .findOne( { topic: req.params.topic } )
       .then( dbModel => { console.dir( req.params.id ); res.json( dbModel ) } )
       .catch( err => res.status( 422 ).json( err ) );
   },
