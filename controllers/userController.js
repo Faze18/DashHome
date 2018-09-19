@@ -2,6 +2,38 @@ const db = require( "../models" );
 
 // Defining methods for the booksController
 module.exports = {
+  findTopics:function(req,res){
+    db.Posts
+    .find( req.query )
+    .sort( { date: -1 } )
+    .then( dbModel => { console.log( "Create:  " + dbModel ); res.json( dbModel ) } )
+    .catch( err => res.status( 422 ).json( err ) );
+  },
+  postTopic: function(req,res){
+    db.Posts
+    .findOne( { topic: req.body.topic }, function ( err, existingUser ) {
+      if ( existingUser == null ) {
+        db.User
+          .create( newTopic )
+          .then( dbModel => res.json( dbModel ) )
+          .catch( err => res.status( 422 ).json( err ) );
+      }
+      else {
+       existingUser.push({note: req.body.note, topic: req.body.topic})
+      }
+    } )
+
+  },
+  findByTopic:function(req,res){
+    console.log( "looking for topioc" )
+    // console.log(req)
+    console.log( req.params.id )
+
+    db.Posts
+      .findOne( { topic: req.params.id } )
+      .then( dbModel => { console.dir( req.params.id ); res.json( dbModel ) } )
+      .catch( err => res.status( 422 ).json( err ) );
+  },
   findAll: function ( req, res ) {
     db.User
       .find( req.query )
