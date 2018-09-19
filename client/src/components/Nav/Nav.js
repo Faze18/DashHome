@@ -11,6 +11,8 @@ const Nav =(props)=> (
 
 <a href="/blog" className="w3-bar-item w3-button w3-hover-none w3-text-grey w3-hover-text-white w3-right">Blog</a>
 
+<a href="/topic" className="w3-bar-item w3-button w3-hover-none w3-text-grey w3-hover-text-white w3-right">Topics</a>
+
 <a href="/workspace" className="w3-bar-item w3-button w3-hover-none w3-text-grey w3-hover-text-white w3-right">WorkSpace</a>
 
     {/* <a href="/home/name" className="w3-bar-item w3-button w3-hover-none w3-text-grey w3-hover-text-white w3-right">home/:id</a> */}

@@ -8,7 +8,7 @@ var Schema = mongoose.Schema;
 var Post = new Schema({
   // `body` is of type String
   topic: String,
-  note: String
+  note: []
 });
 
 // This creates our model from the above schema, using mongoose's model method

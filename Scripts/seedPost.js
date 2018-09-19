@@ -11,11 +11,20 @@ mongoose.connect(
 const postSeed = [
   {
       topic: "first",
-      note: 'note'
+      note: ['note']
   }
 ];
 
-db.Posts
-.collection.insertMany(postSeed)
 
+db.Posts
+  .remove({})
+  .then(() => db.Posts.collection.insertMany(postSeed))
+  .then(data => {
+    console.log(data.result.n + " records inserted!");
+    process.exit(0);
+  })
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
 

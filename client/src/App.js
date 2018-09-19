@@ -15,7 +15,8 @@ import WorkSpace from "./pages/Workspace/index";
 import Facebook from "./pages/FacebookLogin";
 import { Provider } from './context';
 import Blog from "./pages/Blog";
-
+import Topic from "./pages/Topics";
+import TopicId from "./pages/TopicID";
 import "./App.css";
 var logout = function () {
   sessionStorage.clear();
@@ -35,6 +36,8 @@ const App = () =>
           <Route exact path="/home" component={Home} />
           <Route exact path="/logout" component={LogOut} />
           <Route exact path="/blog" component={Blog} />
+          <Route exact path="/topic" component={Topic} />
+          <Route exact path="/topic/:id" component={TopicId} />
 
           <Route exact path="/calendar" component={Calendar} />
           <Route exact path="/news" component={News} />

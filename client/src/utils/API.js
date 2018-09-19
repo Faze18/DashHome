@@ -9,7 +9,8 @@ export default {
     return axios.get("/users/topic/",params);
   },
   postTopic: function(params) {
-    return axios.patch("/users/post/", params);
+    console.dir( params)
+    return axios.post("/users/topic/post", params);
   },
   getUsers: function(params) {
     return axios.get("/users/users");

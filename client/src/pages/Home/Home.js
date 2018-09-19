@@ -45,7 +45,8 @@ class Home extends Component {
         scrollHeight: 12,
         saveBlog:"Save Blog",
         saveNote:"Save Note",
-        saveToDo:"Save To Do"
+        saveToDo:"Save To Do",
+        SaveTopic:"Save Topic"
     }
 
     componentDidMount() {
@@ -206,6 +207,24 @@ class Home extends Component {
         }
 
     }
+    saveTopic = ( event ) => {
+        event.preventDefault();
+        var data = {
+            email: this.state.email,
+            method: "note",
+            note: this.state.text,
+            topic: this.state.newTextTitle
+        }
+        if (this.state.newTextTitle ===""){
+            this.setState({saveTopic: "Pleast give your topic a title"});
+        }else{
+        API.postTopic( data );
+        // this.populateToDo();
+        this.setState({saveTopic: "Topic Saved"});
+
+        }
+
+    }
     setTextTitle = event => {
         this.setState({saveNote: "Save Note"});
         this.setState({saveBlog: "Save Blog"});
@@ -268,13 +287,15 @@ class Home extends Component {
                     childComponent4={<button onClick={this.saveNote} className="w3-btn w3-round w3-black w3-hover-white">{this.state.saveNote}</button>}
                     childComponent5={<button onClick={this.saveTodo} className="w3-btn w3-round  w3-black w3-hover-white">{this.state.saveToDo}</button>}
                     childComponent6={<button onClick={this.saveBlog} className="w3-btn w3-round w3-black w3-hover-white">{this.state.saveBlog}</button>}
-                    
+                    childComponent7={<button onClick={this.saveTopic} className="w3-btn w3-round w3-black w3-hover-white">{this.state.SaveTopic}</button>}
+
                     childComponent8={<br></br>}
                     childComponent9={<h4>Viewer</h4>}
 
                     childComponent10={<div style={{whiteSpace: "pre-wrap"}}>{this.state.text}</div>}
                 >
                 </ColMd7>
+               {<button onClick={this.saveTopic} className="w3-btn w3-round w3-black w3-hover-white">{this.state.SaveTopic}</button>}
 
             </Container>
         )

@@ -10,27 +10,33 @@ module.exports = {
     .catch( err => res.status( 422 ).json( err ) );
   },
   postTopic: function(req,res){
+    console.log("postTopic")
     db.Posts
     .findOne( { topic: req.body.topic }, function ( err, existingUser ) {
       if ( existingUser == null ) {
-        db.User
-          .create( newTopic )
+        db.Posts
+          .create( { topic: req.body.topic, note: req.body.note } )
           .then( dbModel => res.json( dbModel ) )
           .catch( err => res.status( 422 ).json( err ) );
-      }
+
+        }
       else {
-       existingUser.push({note: req.body.note, topic: req.body.topic})
+       existingUser.note.push(req.body.note)
+       existingUser.save();
+
       }
     } )
 
   },
   findByTopic:function(req,res){
-    console.log( "looking for topioc" )
+    console.log( "looking for topic" )
     // console.log(req)
-    console.log( req.params.topic )
+    console.log("topic:"+req.params.id)
+    console.log("topic:"+req.body.id)
+    // console.dir(req)
 
     db.Posts
-      .findOne( { topic: req.params.topic } )
+      .findOne( { topic: req.params.id } )
       .then( dbModel => { console.dir( req.params.id ); res.json( dbModel ) } )
       .catch( err => res.status( 422 ).json( err ) );
   },

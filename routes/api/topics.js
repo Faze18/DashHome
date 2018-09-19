@@ -10,7 +10,7 @@ router
     .get( userController.findTopics )
 router
     .route( "/post" )
-    .get( userController.findTopics )
+    // .get( userController.findTopics )
     .post( userController.postTopic )
 
 module.exports = router;
