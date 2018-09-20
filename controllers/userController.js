@@ -58,13 +58,14 @@ module.exports = {
       .catch( err => res.status( 422 ).json( err ) );
   },
   findUserData: function ( req, res ) {
-    console.log( "RPID" )
+    console.log("id")
+    console.log( req.params.id )
     // console.log(req)
     console.log( req.params.id )
 
     db.User
       .findOne( { email: req.params.id } )
-      .then( dbModel => { console.dir( req.params.id ); res.json( dbModel ) } )
+      .then( dbModel =>  res.json( dbModel ) )
       .catch( err => res.status( 422 ).json( err ) );
   },
   create: function ( req, res ) {

@@ -79,6 +79,8 @@ class CalendarPage extends Component {
         // console.log( this.state.weekDays )
         // console.log( "days" + this.state.days );
         this.setInitialStates();
+        this.getNewMonthNotes();
+
     }
 
 
@@ -192,9 +194,12 @@ class CalendarPage extends Component {
         var id = {
             email: this.state.email
         }
+        console.log('getnewmonthnotes')
         API.getUserData( this.state.email )
             .then( res => {
+                console.log(res)
                 if(res.data) {
+                    console.log(res.data)
                 var thisDate = this.state.thisMonth + "-" + this.state.thisYear;
                 console.log( thisDate );
                 this.clearDayStates();
@@ -231,11 +236,11 @@ class CalendarPage extends Component {
                         this.setState( { day29: res.data.calendarData[n].data[28].dayNote } );
                         this.setState( { day30: res.data.calendarData[n].data[29].dayNote } );
                         this.setState( { day31: res.data.calendarData[n].data[30].dayNote } );
+                    }else{
+                        console.log('no data')
                     }
 
                 }}
-                if ( res.data )
-                    console.log( res.data.calendarData )
             }
             )
     }
